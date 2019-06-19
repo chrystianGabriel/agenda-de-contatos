@@ -72,6 +72,7 @@ class AgendaDAO(context: Context) {
         val db = this.sqlite.writableDatabase;
         db.delete("CONTATOS","ID =?",arrayOf(id.toString()));
         db.close();
+
     }
     fun atualizarContato(contato:Contatos){
         val db = this.sqlite.writableDatabase;

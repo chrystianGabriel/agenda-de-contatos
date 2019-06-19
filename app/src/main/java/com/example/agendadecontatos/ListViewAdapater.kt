@@ -27,7 +27,6 @@ class ListViewAdapater(
             holder.nome?.setText(contato.nome)
             holder.telefone?.setText(contato.telefone)
             holder.email?.setText(contato.email)
-
             return row
 
         }

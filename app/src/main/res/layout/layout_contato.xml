@@ -1,37 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
                                              android:layout_height="match_parent">
 
-    <TextView
-            android:text="Nome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_nome"
-            android:layout_weight="1"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:textAlignment="center"
-            tools:layout_editor_absoluteY="70dp"
-            tools:layout_editor_absoluteX="36dp"/>
-    <TextView
-            android:text="Telefone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:textAlignment="center"
-            tools:layout_editor_absoluteY="102dp"
-            tools:layout_editor_absoluteX="180dp"
-            android:id="@+id/textView_telefone"/>
-    <TextView
-            android:text="Email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:textAlignment="center"
-            tools:layout_editor_absoluteY="102dp"
-            tools:layout_editor_absoluteX="110dp"
-            android:id="@+id/textView_email"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView_nome"/>
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView_email"/>
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView_telefone"/>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
