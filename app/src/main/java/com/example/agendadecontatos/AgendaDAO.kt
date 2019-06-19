@@ -45,13 +45,34 @@ class AgendaDAO(context: Context) {
         db.close();
         return agenda;
     }
+    fun salvarContato(contato:Contatos){
+        val db = this.sqlite.writableDatabase;
+        db.execSQL("CREATE TABLE IF NOT EXISTS CONTATOS("          +
+                "ID INTEGER PRIMARY KEY," +
+                "NOME TEXT NULL,"              +
+                "TELEFONE TEXT NULL,"          +
+                "EMAIL TEXT NULL)");
+        val reg = ContentValues().apply {
+            put("id", contato.id);
+            put("nome", contato.nome);
+            put("telefone", contato.telefone);
+            put("email", contato.email);
+        }
 
+
+        val row = db.insert("CONTATOS",null,reg);
+    }
     fun removerAgenda(){
         val db = this.sqlite.writableDatabase;
         db.execSQL("DROP TABLE CONTATOS");
         db.close();
     }
 
+    fun removerContato(id:Int){
+        val db = this.sqlite.writableDatabase;
+        db.delete("CONTATOS","ID =?",arrayOf(id.toString()));
+        db.close();
+    }
     fun atualizarContato(contato:Contatos){
         val db = this.sqlite.writableDatabase;
         val values = ContentValues();

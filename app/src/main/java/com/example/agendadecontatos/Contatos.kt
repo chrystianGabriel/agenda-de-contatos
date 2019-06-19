@@ -1,6 +1,8 @@
 package com.example.agendadecontatos
 
-class Contatos{
+import java.io.Serializable
+
+class Contatos:Serializable{
 
     var nome = "";
     var email = "";

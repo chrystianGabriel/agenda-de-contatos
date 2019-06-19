@@ -12,7 +12,8 @@ class Agenda{
     }
 
     fun getContato(id:Int):Contatos{
-        return Contatos();
+        val contato = this.contatos.filter { contato -> contato.id == id }.single();
+        return contato;
     }
 
     fun alterarContato(id:Int,contato:Contatos){
