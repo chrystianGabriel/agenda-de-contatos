@@ -4,11 +4,11 @@ class Agenda{
     var contatos = ArrayList<Contatos>();
 
     fun adicionarContato(contato:Contatos){
-
+        this.contatos.add(contato);
     }
 
-    fun removerContato(){
-
+    fun removerContato(contato:Contatos){
+        this.contatos.remove(contato);
     }
 
     fun getContato(id:Int):Contatos{
@@ -16,6 +16,9 @@ class Agenda{
     }
 
     fun alterarContato(id:Int,contato:Contatos){
-
+        val c = this.contatos.filter { contato -> contato.id == id }.single();
+        c.nome     = contato.nome;
+        c.email    = contato.email;
+        c.telefone = contato.telefone;
     }
 }
