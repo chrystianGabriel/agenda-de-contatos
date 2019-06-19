@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_adicionar.*
+import java.lang.Math.random
 
 class activity_adicionar : AppCompatActivity() {
 
@@ -30,6 +31,7 @@ class activity_adicionar : AppCompatActivity() {
     fun cadastrarContato(){
         var contato = Contatos();
         var dao = AgendaDAO(applicationContext);
+        contato.id = (0..1000).random();
         contato.nome = editText_nome.text.toString();
         contato.email = editText_email.text.toString();
         contato.telefone = editText_telefone.text.toString();

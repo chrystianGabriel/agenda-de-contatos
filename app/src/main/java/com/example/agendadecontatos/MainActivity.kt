@@ -11,6 +11,7 @@ import android.widget.ListView
 class MainActivity : AppCompatActivity() {
     var dao:AgendaDAO? = null;
     var agenda:Agenda? = null;
+    var adapter:ListViewAdapater? = null;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,30 +20,35 @@ class MainActivity : AppCompatActivity() {
         this.agenda =  this.dao?.recuperarAgenda();
 
         val list : ListView = findViewById(R.id.list_contatos) as ListView
-        val adapter = ListViewAdapater(this, R.layout.layout_contato, this.agenda?.contatos as ArrayList<Contatos>)
-        list.adapter = adapter
+        this?.adapter = ListViewAdapater(this, R.layout.layout_contato, this.agenda?.contatos as ArrayList<Contatos>)
+        list.adapter = this?.adapter
         var itemDaLista:Contatos? = null;
+
         list.onItemClickListener = object: AdapterView.OnItemClickListener{
             override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 itemDaLista = list.getItemAtPosition(position) as Contatos;
                 val intent = Intent(baseContext, activity_adicionar::class.java)
                 intent.putExtra("CONTATOS",agenda?.getContato(itemDaLista?.id as Int));
-                startActivity(intent)
-                agenda =  dao?.recuperarAgenda();
+                startActivity(intent);
             }
         }
+
 
     }
 
     fun click_adicionar(view : View){
         val intent = Intent(this, activity_adicionar::class.java)
         startActivity(intent)
-        this.agenda =  this.dao?.recuperarAgenda();
+
 
 
     }
 
-    fun click_editar(view:View){
+    fun click_atualizar(view:View){
+        this.agenda =  this.dao?.recuperarAgenda();
+        this.adapter?.clear();
+        this.adapter?.addAll(this.agenda?.contatos);
+        this.adapter?.notifyDataSetChanged();
 
 
     }
